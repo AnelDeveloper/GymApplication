@@ -1,0 +1,224 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <br>
+  <br>
+    <br>
+
+
+  <div class="text-center">
+    <img src="img/gym2.png" style="max-width:20%;" class="rounded float-left" alt="Responsive image" id="myImg">
+    <br>
+    <br>
+    <br>
+    <h3 class="panel-title pull right">ZA SVE GYM CENTRE U SARAJEVU</h3>
+    <br>
+    <br>
+
+  </div>
+  <br>
+
+
+
+      <div class="row">
+
+
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+
+
+
+
+
+      </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+
+
+
+          <div class="panel panel-info">
+
+            <div class="panel-heading">
+              <h3 class="panel-title">Fitness membership</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="img/qr-code.png" class=" img-responsive"> </div>
+
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information" ">
+                    <tbody>
+                      <tr>
+                        <td>Name and surname:</td>
+                        <td id="name">Programming</td>
+                      </tr>
+                      <tr>
+                        <td>Start Date</td>
+                        <td id="sDate" >06/23/2013</td>
+                      </tr>
+                      <tr>
+                        <td>Suplements</td>
+                        <td id="vac">01/24/1988</td>
+                      </tr>
+
+                         <tr>
+                             <tr>
+                        <td>City</td>
+                        <td id="City">Female</td>
+                      </tr>
+                        <tr>
+                        <td>Country</td>
+                        <td id="Country">Kathmandu,Nepal</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td id="Email"><a href="mailto:info@support.com">info@support.com</a></td>
+                      </tr>
+
+
+
+
+                    </tbody>
+                  </table>
+
+                  <button type="button" onclick="createPDF()" name="button">Print your reservation certificate</button>
+
+                  <br>
+                  <br>
+
+                  <button type="button" onclick="window.open('mailto:anel.kujovic.developer@gmail.com?subject=Question for CA staff&body=Fill in your mail here');" name="button">Send mail to our staff</button>
+
+
+
+                    <script type="text/javascript">
+
+                      $(document).ready(function() {
+                    var user_info = CSUtils.parse_jwt(window.localStorage.getItem("token"));
+                    getProfile();
+
+                });
+
+                function getProfile(){
+                  var user_info = CSUtils.parse_jwt(window.localStorage.getItem("token"));
+                  var id= user_info.account_id;
+                  console.log(id);
+
+
+                  $.ajax({
+                     url: 'http://localhost/api/clients/profiles/' + id,
+                     type: 'GET',
+                     beforeSend: function(xhr){
+                       if (localStorage.getItem("token")){ // optional header token due login and other endpoints
+                         xhr.setRequestHeader('Authorization', localStorage.getItem("token"));
+                       }
+
+                     },
+                     async: false,
+                     cache: false,
+                     timeout: 30000,
+                     fail: function(){
+                         return true;
+                     },
+
+                     success: function(data) {
+
+                       console.log(data);
+
+                       document.getElementById("name").innerHTML = data.Name;
+
+                      document.getElementById("sDate").innerHTML = data.GymDate;
+                      document.getElementById("vac").innerHTML = data.protein;
+                      document.getElementById("City").innerHTML = data.City;
+                      document.getElementById("Country").innerHTML = data.Country;
+                      document.getElementById("Email").innerHTML = data.Email;
+
+
+
+}
+
+
+                 });
+                }
+
+                function createPDF( ){
+
+                  var doc=new jsPDF();
+                  var img = new Image();
+                  img.src = 'img/gym2.png'
+                  var img2 = new Image();
+                  img2.src = 'img/qr-code.png'
+                  let value2 = generateRandomInteger(100000);
+
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date+' '+time;
+
+                  doc.addImage(img, 'PNG', 10, 10, 30, 15);
+                  doc.text("Bosnia and Herzegovina",10, 40);
+                  doc.text("Federation of Bosnia and Herzegovina",10, 50);
+                  doc.text("Sarajevo Canton",10, 60);
+
+
+                  doc.text("GYM Membership",10, 100);
+                  doc.text("Name and surname: " + document.getElementById("name").innerHTML,10, 120);
+                  doc.text("Start Date: " + document.getElementById("sDate").innerHTML,10, 130);
+                  doc.text("Suplements: " + document.getElementById("vac").innerHTML,10, 140);
+                  doc.text("City: " + document.getElementById("City").innerHTML,10, 150);
+                  doc.text("Country: " + document.getElementById("Country").innerHTML,10, 160);
+                  doc.text("Email: " + document.getElementById("Email").innerHTML,10, 170);
+                  doc.addImage(img2, 'PNG', 10, 190, 30, 30);
+
+                  doc.text("Use this QR code as identification tool at the Fitness center",10, 230);
+
+                  doc.text("Certificate ID: " + value2 ,10, 240);
+
+                  doc.text("Issued on: " + dateTime ,10, 270);
+
+                  doc.text("(C) 2022 FitnessApp Assistant" ,10, 287);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                //  doc.text(document.getElementById("name").innerHTML, 10,10);
+                  //doc.text(document.getElementById("Country").innerHTML, 25, 25);
+                  doc.save("GymMembership.pdf");
+
+                }
+
+                function generateRandomInteger(max) {
+      return Math.floor(Math.random() * max) + 10000;
+}
+
+
+
+
+
+                  </script>

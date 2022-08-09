@@ -1,0 +1,1 @@
+FitnessApp assistant is the web application that helps the health and recreative system of Bosnia and Herzegovina 

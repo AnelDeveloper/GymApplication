@@ -1,0 +1,203 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Gym Places</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <body>
+        <!-- /.row -->
+        <label>Gym Places</label>
+        <select  type="text" name="proteins" class="form-control" id="TeretanaMjesta">
+            <option value="0">Choose a place</option>
+            <option value="1"> Pro Gym</option>
+            <option value="2">Fitness All in </option>
+            <option value="3">Shark</option>
+            <option value="4">All 4 Sport</option>
+
+
+
+
+
+        </select>
+
+        <br>
+
+        <input type="button" id="button" value="Select" onclick="getSelectValues();" />
+        <input type="reset" id="rikverc" value="Return" onClick="window.location.reload(true)">
+
+        </div>
+
+        <br>
+
+
+        <div class="text-center">
+          <img src="img/sarajevo.jpg" style="max-width:100%;" class="rounded float-left" alt="Responsive image" id="myImg">
+        </div>
+
+
+        <div class="title">
+          <h2>Location of Gym</h2>
+        </div>
+        <p id="p1">Nothing is chosen now</p>
+
+
+
+
+        <div class="title">
+          <h2>Information and working hours</h2>
+        </div>
+        <p id="p2">Nothing is chosen now</p>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+
+    <!-- Modal content-->
+
+
+  </div>
+
+
+
+</div>
+
+<div class="title">
+  <h2>Telephone</h2>
+</div>
+<p id="p4">Nothing is chosen now</p>
+
+
+<div class="title">
+  <h2>Photo of the Gym</h2>
+</div>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">View photo</button>
+
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Photo of Gym</h4>
+      </div>
+      <div class="modal-body">
+        <img id="p6" src="img/unnamed.png" style="max-width:100%;" class="rounded float-left" alt="Responsive image" id="myImg">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
+<script type="text/javascript">
+
+
+  document.getElementById("TeretanaMjesta").selectedIndex = 0;
+
+  $("#rikverc").hide();
+
+
+
+  function getSelectValues()
+            {
+
+
+                var x = document.getElementById("TeretanaMjesta").value;
+
+
+
+                if (x==1){
+
+                  toastr.success("You have selected Pro Gym");
+
+                  document.getElementById("p1").innerHTML = "Kosevsko" ;
+                  document.getElementById("p2").innerHTML = "Working days: 24/7" ;
+                  document.getElementById("p3").src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.2433723761774!2d18.30833701546543!3d43.830051479115546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4758ca3fd7b310fb%3A0x7af7c3d11d2a09f9!2sDom%20zdravlja%20Ilid%C5%BEa!5e0!3m2!1shr!2sba!4v1624551773102!5m2!1shr!2sba" ;
+                  document.getElementById("p4").innerHTML = "+387112333" ;
+                  document.getElementById("p6").src = "http://photos.wikimapia.org/p/00/02/84/17/12_big.jpg";
+
+                  $("#TeretanaMjesta").hide();
+                  $("#button").hide();
+                  $("#rikverc").show();
+
+
+                  }
+                else if (x==2){
+                    toastr.success("Fitnes  All In");
+                    document.getElementById("p1").innerHTML = "Paromlinska 34, Sarajevo 71000" ;
+                    document.getElementById("p2").innerHTML = "Working days: 09:00 - 19:00 / Monday-Friday" ;
+                    document.getElementById("p3").src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.606445814628!2d18.198584315465165!3d43.822522079115856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475f4aa3a8054deb%3A0xc91e045ce93370e7!2sDom%20zdravlja%20Had%C5%BEi%C4%87i!5e0!3m2!1shr!2sba!4v1624552030690!5m2!1shr!2sba" ;
+                    document.getElementById("p4").innerHTML = "+387334201209" ;
+                    document.getElementById("p6").src = "https://www.allinfitness.ba/wp-content/uploads/2019/01/3-Large.jpg";
+
+
+                    $("#TeretanaMjesta").hide();
+                    $("#button").hide();
+                    $("#rikverc").show();
+
+
+                    }
+              else if (x==3){
+                      toastr.success("Shark (Fitness Club Shark)");
+                      document.getElementById("p1").innerHTML = "Jošanička 55 Vogošča, Sarajevo, Vogošća 71320" ;
+                      document.getElementById("p2").innerHTML = "Working days: 09:00 - 19:00 / Monday-Friday" ;
+
+                      document.getElementById("p4").innerHTML = "+38733255035" ;
+                      document.getElementById("p6").src = "data:image/jpeg;base64,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";
+
+
+                      $("#TeretanaMjesta").hide();
+                      $("#button").hide();
+                      $("#rikverc").show();
+
+
+                      }
+              else {
+                        toastr.success("ALL4SPORT Fitness");
+                        document.getElementById("p1").innerHTML = "Sports Hall Goran Čengić - Novo Sarajevo" ;
+                        document.getElementById("p2").innerHTML = "Working days: 09:00 - 19:00 / Monday-Friday" ;
+
+                        document.getElementById("p4").innerHTML = "+38733724700" ;
+                        document.getElementById("p6").src = "https://nyamie.com/uploads/photos/medium/Entity-N981cXefheEJUwi7.JPG";
+
+
+                        $("#TeretanaMjesta").hide();
+                        $("#button").hide();
+                        $("#rikverc").show();
+
+                        }
+        
+
+
+
+                        }
+
+
+
+
+
+
+
+</script>
+</body>

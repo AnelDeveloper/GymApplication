@@ -1,0 +1,17 @@
+{
+    "name": "ibu/cv19assistant",
+    "description": "FitnessApp assistant project",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "Anel",
+            "email": "anel.kujovic.developer@gmail.com"
+        }
+    ],
+    "require": {
+        "mikecao/flight": "^1.3",
+        "zircote/swagger-php": "^3.1",
+        "swiftmailer/swiftmailer": "^6.2",
+        "firebase/php-jwt": "^5.2"
+    }
+}
